@@ -1,0 +1,39 @@
+<div class="row">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+		<div class="card table-card">
+			<div class="card-header pb-0">
+				<div class="d-flex justify-content-between">
+					<h4 class="card-title mg-b-0"><%= title %></h4>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="row filter_cls">
+					<div class="form-group col-md-3">
+						<select id="user_status" class="form-control">
+							<option selected value="all">All</option>
+							<option value="0">Inactive</option>
+							<option value="1">Active</option>
+						</select>
+					</div>
+				</div>
+				<div class="table-responsive">
+					<table id="usersList" class="table table-striped table-bordered" style="width:100%">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>User Name</th>
+								<th>User Email</th>
+								<th>User Phone No.</th>
+								<!--<th>User Password</th>-->
+								<th>Registration Date</th>
+								<th>Status</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<div id="msg"></div>
+			</div>
+		</div>
+	</div>
+</div>

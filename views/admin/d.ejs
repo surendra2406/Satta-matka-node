@@ -1,0 +1,59 @@
+<div class="ad-auth-wrapper">
+	<div class="ad-auth-box">
+		<div class="row align-items-center">
+			<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+				<div class="ad-auth-img">
+					<img src="/adminassets/images/auth-img1.png" alt="" />
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+				<div class="ad-auth-content">
+				<% if (flag_status == 2) { %>
+					<form id="resetFrm" class="validation-form-container" method="post">
+					<input type="hidden" name="email" value="<%= email %> ">
+						<a class="ad-auth-logo">
+							<img src="/adminassets/images/logo2.png" alt="" />
+						</a>
+						<h2><span class="primary">Hello,</span>Admin!</h2>
+						<p>Enter Your New Password That You Remind Always!</p>
+						<div class="ad-auth-form">
+							<div class="ad-auth-feilds">
+								 <label class="col-form-label">&nbsp;</label>
+								<input type="text" autofocus name="new_password" autocomplete="off" id="new_password" class="ad-input in_field"  placeholder="Enter New Password"/>
+								<div class="ui corner label">
+									<i class="asterisk icon">*</i>
+								</div>
+							</div>
+							<div class="ad-auth-feilds">
+								 <label class="col-form-label">&nbsp;</label>
+								<input type="text" autofocus name="confirm_password" autocomplete="off" id="confirm_password" class="ad-input in_field"  placeholder="Enter Confirm New Password"/>
+								<div class="ui corner label">
+									<i class="asterisk icon">*</i>
+								</div>
+							</div>
+						</div>
+						<div class="ad-auth-btn">
+							<button type="submit" class="effect-btn btn btn-primary squer-btn mt-2 mr-2 login_btn_cls" id="submitBtn"><i class="fa fa-spin fa-spinner mr-2" id="btn_spinner"></i>Change Password</button>
+						</div>
+						<p id="errormsg"></p>
+						<p class="ad-register-text">Already have an account ? <a href="<%= admin %> ">Login</a></p>
+					</form>
+				<% } %>
+				
+				<% if (flag_status == 1) { %>
+					<a class="ad-auth-logo">
+						<img src="/adminassets/images/logo2.png" alt="" />
+					</a>
+					<h2><span class="primary">Hello,</span>Admin!</h2>
+					<h4><span class="primary"><%= msg %> </span></h4>
+					<p class="ad-register-text">Generate New Link? <a href="<%= admin %>/forgot-pws">Reset Link</a></p>
+				<% } %>
+				
+				</div>
+			</div>
+		</div>
+		<div class="ad-notifications ad-error">
+			<p><span>Duhh!</span>Something Went Wrong</p>
+		</div>
+	</div>
+</div>

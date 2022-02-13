@@ -1,0 +1,102 @@
+<div class="row">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+		<div class="card">
+			<div class="card-header">
+				<h4><%= title %></h4>
+			</div>
+			<div class="card-body">
+				<form method="post" id="settingFrm" class="separate-form validation-form-container">
+				<input type="hidden" name="setting_id" id="setting_id" value="">
+					<div class="row">
+						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="" class="col-form-label">Heading 1</label>
+								<input class="form-control in_field" autocomplete="off" type="text" placeholder="Please Enter Some Text" name="image_text" id="image_text" value="">
+								<div class="ui corner label" id="demo1">
+									<i class="asterisk icon">*</i>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label">Heading 2</label>
+								<input class="form-control in_field" type="text" placeholder="Enter Heading" name="heading_2" id="heading_2" value="">
+								<div class="ui corner label star_box">
+									<i class="asterisk icon">*</i>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label">Email</label>
+								<input class="form-control in_field" type="text" placeholder="Enter Email" name="email" id="email" value="">
+								<div class="ui corner label star_box">
+									<i class="asterisk icon">*</i>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12">
+							<div class="form-group m-b-30">
+								<label for="profile_picture" class="col-form-label">Upload Image(Allow Only.jpeg,.jpg,.png)</label>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<div class="fileUpload btn btn-secondary upload-btn">
+											<span class="upl" id="upload">Upload Image</span>
+											<input type="file"  id="pro_pic" class="upload up" onchange="imageUpload(this.id,'uploads/images/','profile_picture','pro_pic_view','pro_pic_remove',1)"/>
+											<input type="hidden" name="profile_picture" id="profile_picture" value="">
+										</div>
+									</div>
+									<input type="text" placeholder="No File chosen" class="form-control empimage in_field img_error" name="prof_pic" id="prof_pic" value="" readonly>
+								</div>
+								<div class="ui corner label">
+								   <i class="asterisk icon">*</i>
+								</div>
+								
+								<div class="progress progress_pro">
+								   <div class="progress-bar progress-bar-striped progress-bar-animated"></div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-2 col-lg-2 col-md-12 col-sm-12 col-12">
+							<span class="doc_append">
+								<img id="pro_pic_view" src="" class="pro_pic_view"/>
+							</span>
+							<input type="button" id="pro_pic_remove" value="x" class="pro_pic_remove rmv" onclick="removeImage(this.id,'pro_pic','pro_pic_view','profile_picture','uploads/images/',1);" style="display:none"/>
+						</div>
+						
+						<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+							<div class="form-group">
+								<label class="col-form-label">Description Title</label>
+								<input class="form-control in_field" type="text" placeholder="Enter Description Title" name="description_title" id="description_title" value="">
+								<div class="ui corner label star_box">
+									<i class="asterisk icon">*</i>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="" class="col-form-label">Description</label>
+								<textarea class="form-control in_field" autocomplete="off" placeholder="Enter Description" name="description" id="description"></textarea>
+								<div class="ui corner label">
+									<i class="asterisk icon">*</i>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xl-8 col-lg-8 col-md-6 col-sm-12 col-12">
+							<div class="form-group">
+								<button type="submit" class="effect-btn btn btn-primary squer-btn mt-2 mr-2" id="submitBtn"><i class="fa fa-spin fa-spinner mr-2" id="btn_spinner"></i>Submit</button>
+								<button type="reset" class="effect-btn btn btn-danger squer-btn mt-2 mr-2">Reset</button>
+							</div>
+						</div>
+					</div>
+					<div class="form-group mt-2">
+						<p id="errormsg"></p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

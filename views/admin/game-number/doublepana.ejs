@@ -1,0 +1,31 @@
+<div class="row">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+		<div class="card table-card">
+			<div class="card-header pb-0">
+				<div class="d-flex justify-content-between">
+					<h4 class="card-title mg-b-0">Double Pana Numbers</h4>
+					 <!-- <a class="effect-btn btn btn-primary squer-btn mr-2 openPopupAddGames"  href="javascript:void(0);" data-href="<%= admin %>/add-games/0" role="button" data-toggle="modal">Add Games</a>	 --> 
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<div>
+						<% numbers.forEach(element => { %>
+					  <h5>Single Ank</h5>
+					  <button class="ank_box"> <%= element.sr_no%></button>
+					  <div>
+						<% for( let index = 0; index < element.double_pana.length; index++ ) { %>
+							<button class="digit_num_box"><%= element.double_pana[index]%></span></button>
+						<% } %>
+					  </div>
+					  <% }) %>
+					</div>
+		  
+					<div id="msg"></div>
+				  </div>
+				
+				
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,53 @@
+<div class="row">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+		<div class="card table-card">
+			<div class="card-header pb-0">
+				<div class="d-flex justify-content-between">
+					<h4 class="card-title mg-b-0"><%= banner_title %></h4>
+					<a class="effect-btn btn btn-primary squer-btn mr-2 openPopupAddGamesCategory"  href="javascript:void(0);" data-href="<%= admin %>/add-starline-games-category/0" role="button" data-toggle="modal">Add Games Type</a>	
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="row filter_cls">
+					<div class="form-group col-md-3">
+						<select id="cat_status" class="form-control">
+							<option selected value="all">All</option>
+							<option value="0">No</option>
+							<option value="1">Yes</option>
+						</select>
+					</div>
+				</div>
+				<div class="table-responsive">
+					<table id="startlineGameCatList" class="table table-striped table-bordered" style="width:100%">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Game Type</th>
+								<th>Creation Date</th>
+								<th>Status</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<div id="msg"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Add Games modal start -->
+<div class="modal fade" id="addGamesModal" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-frame modal-top modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title game_form_title"></h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>         
+			</div>
+			<div class="modal-body p-0 pt-2 games_body ">        
+			
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Add Games modal end -->

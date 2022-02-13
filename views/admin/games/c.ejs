@@ -1,0 +1,51 @@
+<div class="card-body p-0"> 
+	<form class="theme-form" id="marketoffdayFrm" name="marketoffdayFrm" method="post" >
+		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+			<div class="row">
+				
+				<% var i = 0; schedule.forEach(element => { %>
+					<input type="hidden" name="game_id" id="game_id" class="array-control" value="<%= id %>">
+					<input type="hidden" name="week_id" id="week_id" class="array-control" value="<%= element._id %>">
+					<input type="hidden" name="days[]" id="days" class="array-control" value="<%= element.week_day %>">
+					<div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+						<div class="form-group m-t-34">
+							<div class="col-sm-10">
+								<div class="checkbox">
+									<input type="checkbox" class="array-control" id="<%= element.week_day %>" name="weekday[]" <% if(element.schedule_status == true) { %> checked <% } %> value="<%= element.week_day %>">
+									<label for="<%= element.week_day %>"><%= element.week_day %></label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+						<div class="form-group">
+							<label class="col-form-label">Game Open Time</label>
+							<input class="form-control in_field array-control" type="time" placeholder="Enetr Game Open Time" name="open_time[]" id="open_time" value="<%= element.open_time %>">
+						</div>
+					</div>
+					<div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
+						<div class="form-group">
+							<label class="col-form-label">Game Close Time</label>
+							<input class="form-control in_field array-control" type="time" placeholder="Enetr Game Close Time" name="close_time[]" id="close_time" value="<%= element.close_time %>">
+						</div>
+					</div>
+					
+				<% }); %>
+					
+				<div class="form-group col-12">
+					<button type="submit" class="effect-btn btn btn-primary squer-btn mt-2" id="submitBtn"><i class="fa fa-spin fa-spinner mr-2" id="btn_spinner"></i>Submit</button>
+				</div>
+			</div>
+			<div id="text_array"></div>
+		</div>
+		<div class="form-group">
+			<div id="alertmsg"></div>
+		</div>
+	</form>
+</div>
+<script src="/adminassets/js/jquery.validate.js"></script>   
+<script src="/adminassets/js/jquery.validate.min.js"></script> 
+<script src="/adminassets/js/additional-methods.min.js"></script>            
+<script src="/adminassets/js/validation.js"></script> 	
+	
+ 

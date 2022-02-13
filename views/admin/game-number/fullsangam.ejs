@@ -1,0 +1,80 @@
+<div class="row">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+		<div class="card table-card">
+			<div class="card-header pb-0">
+				<div class="d-flex justify-content-between">
+					<h4 class="card-title mg-b-0">Full Sangam Numbers</h4>
+					<!-- <a class="effect-btn btn btn-primary squer-btn mr-2 openPopupAddGames"  href="javascript:void(0);" data-href="<%= admin %>/add-games/0" role="button" data-toggle="modal">Add Games</a>	 --> 
+				</div>
+			</div>
+
+			<div class="card-body">
+				<div class="table-responsive">
+					<div>
+					<% numbers.forEach(element => { %>
+						<h5>Single Ank</h5>
+						<button class="ank_box"><%= element.sr_no%></button>
+						   <div>
+							<% for( let index = 0; index < element.single_pana.length; index++ ) { %>
+								<button class="digit_num_box"><%= element.single_pana[index]%></button>
+								<% } %>
+								
+						   </div>
+					<% }) %>
+				</div>
+				
+				<div id="msg"></div>
+			</div>
+
+			
+			 <div class="card-body">
+				
+			
+					<div class="table-responsive">
+
+						
+						<label style="margin: 10px;">Open Ank</label>
+						<div style="display: flex;justify-content: left; align-content: space-around; flex-direction: row; flex-wrap: wrap; overflow-y: auto;">
+							
+							
+						
+							<% open_ank.forEach(element => { %>
+								<div style="background-color: aquamarine;border: 3px solid green; color: black;width: 50px; ;
+								height: 50px; text-align: center;font-size: 15px;padding: 7px; border-radius: 5px; margin:1%  ; height: 50px;">
+								
+								<%= element.open_ank %> </div>
+					
+							<% }) %>
+
+							<br/>						
+								
+						   <label style="margin: 10px; line-break: normal">Close Ank</label>
+						   <div style="display: flex;justify-content: left; align-content: space-around; flex-direction: row; flex-wrap: wrap;">
+						
+						
+							<% close_ank.forEach(element => { %>
+								<div style="background-color: aquamarine;border: 3px solid green; color: black;width: 50px; ;
+								height: 50px; text-align: center;font-size: 15px;padding: 7px; border-radius: 5px; margin:1%  ; ">
+								
+									
+									<%= element.close_ank %></div>
+							 
+							<% }) %>
+								
+									
+							
+							
+							
+							
+		
+						</div>
+						
+					</div>	
+	
+					
+				
+				<div id="msg"></div>
+			</div>
+		</div> 
+	</div>
+</div>

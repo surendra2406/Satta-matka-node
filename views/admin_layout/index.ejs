@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" type="text/css" href="/adminassets/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="/adminassets/css/auth.css">
+    <link rel="stylesheet" type="text/css" href="/adminassets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/adminassets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/adminassets/css/icofont.min.css">
+    <link rel="stylesheet" type="text/css" href="/adminassets/css/style.css">
+    <link rel="shortcut icon" type="image/png" href="/adminassets/images/faviconmatka.png">
+    <link rel="stylesheet" type="text/css" href="/adminassets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/adminassets/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="/adminassets/css/jquery.validation.css">
+    <link rel="stylesheet" type="text/css" href="/adminassets/css/datatables.css">
+    <link rel="stylesheet" type="text/css" href="/adminassets/css/select2.css">
+    <link rel="stylesheet" type="text/css" href="/adminassets/css/date-picker.css">
+    <link rel="stylesheet" type="text/css" href="/adminassets/js/datepicker/wickedpicker.css">
+  </head>
+  <body>
+    <div class="loader">
+      <div class="spinner">
+        <img src="/adminassets/images/loader.gif" alt=""/>
+      </div> 
+    </div>
+    <input type="hidden" id="admin" value="<%= admin %>">
+    <input type="hidden" id="flag_name" value="<% if(typeof flag_name == 'string') { %><%= flag_name %><% } %>">
+
+    <% if (data.type != 1) { %>
+      <%- include('./header') %> 
+    <% } %>
+    
+    <div class="page-wrapper">
+      <div class="main-content">
+        <%- include('../admin/'+data.fileName) %> 
+      </div>
+    </div>
+
+    <% if (data.type != 1) { %>
+      <%- /* include('./footer') */ %> 
+    <% } %>
+   
+    <!-- Logout Modal start -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+      <div class="modal-dialog modal-frame modal-top modal-lg" role="document">
+        <div class="modal-content ">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Logout</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-8 text-right">
+                <p>Are you sure you want to logout? If you logout then your session is terminated.</p>
+              </div>
+              <div class="col-md-4 text-right">                             
+                <button class="btn btn-danger waves-effect waves-light" data-dismiss="modal">Cancel</button>                             
+                <a href="<%= admin %>/logout" class="btn btn-info waves-effect waves-light">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Logout Modal end -->
+
+    <script type="text/javascript" src="/adminassets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/adminassets/js/popper.min.js"></script>
+    <script type="text/javascript" src="/adminassets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/adminassets/js/swiper.min.js"></script>
+    <script type="text/javascript" src="/adminassets/js/nice-select.min.js"></script>
+    <script type="text/javascript" src="/adminassets/js/custom.js"></script>
+    <script type="text/javascript" src="/adminassets/js/jquery.validate.js"></script>   
+    <script type="text/javascript" src="/adminassets/js/jquery.validate.min.js"></script> 
+    <script type="text/javascript" src="/adminassets/js/additional-methods.min.js"></script>            
+    <script type="text/javascript" src="/adminassets/js/validation.js"></script> 
+    <script type="text/javascript" src="/adminassets/js/customjs.js"></script>   
+    <script type="text/javascript" src="/adminassets/js/datatables.min.js"></script>
+    <script type="text/javascript" src="/adminassets/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" src="/adminassets/js/select2/select2.full.min.js"></script>
+    <script type="text/javascript" src="/adminassets/js/select2/select2-custom.js"></script>
+    <script type="text/javascript" src="/adminassets/js/datepicker/date-picker/datepicker.js"></script>
+    <script type="text/javascript" src="/adminassets/js/datepicker/date-picker/datepicker.en.js"></script>
+    <script type="text/javascript" src="/adminassets/js/datepicker/date-picker/datepicker.custom.js"></script>
+    <script type="text/javascript" src="/adminassets/tinymce/tinymce.min.js"></script>
+
+    <script>
+      var dataTable='';
+      var flag_name = $("#flag_name").val();
+        if (flag_name == 'gameNameListTableFlag') {
+          dataTable = $('#gamesList').DataTable( {
+            "processing": true,
+            "serverSide": true,
+            "order": [0,"desc"],
+            "ajax":{"url":admin+"/game-name-list-grid-data","type": "POST","dataType": "json"},
+            "columns": [
+              { "data": "sr" },
+              { "data": "game_name" },
+              { "data": "open_time" },
+              { "data": "close_time" },
+              { "data": "display_status" },
+              { "data": "market_status" },
+              { "data": null },					
+            ],
+              columnDefs: [{
+                  targets: [-1], render: function (a, b, data, d) {
+                  var action='';
+                  
+                  action+='<a title="Edit" href="javascript:void(0);" data-href="'+admin+'/add-games/'+data.game_id+'" class="openPopupEditGame"><button  class="btn btn-outline-primary btn-xs m-l-5 btn_cls" type="button"  title="edit">Edit</button></a>';
+                  
+                  action+='<a title="Off Day" href="javascript:void(0);" data-href="'+admin+'/market-off-day/'+data.game_id+'" class="openPopupMarketoffDayGame"><button  class="btn btn-outline-primary btn-xs m-l-5 btn_cls" type="button"  title="Off Day">Market Off Day</button></a>';
+                    
+                  if (data.flash_status == true) {                              								
+                    action+='<a title="removeFlash" class="success removeFlash" href="javascript:void(0);"  data-id="success-'+data.game_id+'-games-_id-flash_status-false"><button class="btn btn-outline-danger btn-xs m-l-5 btn_cls" type="button">Remove In Highlights</button></a>';
+                  }else{                              					
+                    action+='<a title="addFlash" class="danger addFlash" href="javascript:void(0);"  data-id="danger-'+data.game_id+'-games-_id-flash_status-true"><button class="btn btn-outline-success btn-xs m-l-5 btn_cls" type="button">Add In Highlights</button></a>';
+                  }
+
+                  return action;
+                }
+              }],								
+          });												
+          dataTable.on('page.dt', function() {
+          $('html, body').animate({
+            scrollTop: $(".dataTables_wrapper").offset().top-50						   
+            }, 'slow');						
+          });	
+          $('#game_status').on('change', function () {
+            var game_status = $(this).val();
+            dataTable.ajax.url(admin+"/game-name-list-grid-data/"+game_status).load();
+          });
+        }
+
+        if (flag_name == 'subAdminListTableFlag') {
+          dataTable = $('#subAdminList').DataTable( {
+            "processing": true,
+            "serverSide": true,
+            "order": [0,"desc"],
+            "ajax":{"url":admin+"/sub-admin-list-grid-data","type": "POST","dataType": "json"},
+            "columns": [
+              { "data": "sr" },
+              { "data": "name" },
+              { "data": "username" },
+              { "data": "email" },
+              { "data": "insert_date" },
+              { "data": "display_status" },
+              { "data": null },					
+            ],
+              columnDefs: [{
+                  targets: [-1], render: function (a, b, data, d) {
+                  var action='';
+                  
+                  action+='<a title="Edit" href="javascript:void(0);" data-href="'+admin+'/add-sub-admin/'+data.admin_id+'" class="openPopupEditSubAdmin"><button  class="btn btn-outline-primary btn-xs m-l-5 btn_cls" type="button"  title="edit">Edit</button></a>';
+                  
+                  if (data.status == true) {
+                    action+='<a class="success blockUnblock" id="success-'+data.admin_id+'-admins-false"><button class="btn btn-outline-success btn-xs m-l-5 btn_cls" type="button" title="Inactivate">Inactivate</button></a>';
+                  }else{
+                    action+='<a class="danger blockUnblock" id="danger-'+data.admin_id+'-admins-true"><button class="btn btn-outline-danger btn-xs m-l-5 btn_cls" type="button" title="Activate">Activate</button></a>'; 
+                  }
+
+                  return action;
+                }
+              }],								
+          });												
+          dataTable.on('page.dt', function() {
+          $('html, body').animate({
+            scrollTop: $(".dataTables_wrapper").offset().top-50						   
+            }, 'slow');						
+          });	
+          $('#user_status').on('change', function () {
+            var user_status = $(this).val();
+            dataTable.ajax.url(admin+"/sub-admin-list-grid-data/"+user_status).load();
+          });
+        }
+         
+ </script>       
+
+  </body>
+</html>

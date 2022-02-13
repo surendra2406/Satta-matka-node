@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+		<div class="card table-card">
+			<div class="card-header pb-0">
+				<div class="d-flex justify-content-between">
+					<h4 class="card-title mg-b-0">Single Digit Numbers</h4>
+					<!-- <a class="effect-btn btn btn-primary squer-btn mr-2 openPopupAddGames"  href="javascript:void(0);" data-href="<%= admin %>/add-games/0" role="button" data-toggle="modal">Add Games</a>	 -->
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<% numbers.forEach(element => { %>
+						<button class="digit_num_box">
+						<%=  element.single_digit  %>
+						</button>
+					<% }) %>
+				</div>
+				<div id="msg"></div>
+			</div>
+		</div>
+	</div>
+</div>

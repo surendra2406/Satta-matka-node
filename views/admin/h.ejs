@@ -1,0 +1,61 @@
+<div class="card-body p-0">
+	<form method="post" id="subAdminFrm" class="separate-form validation-form-container p-0 pb-2">
+		<input type="hidden" name="admin_id" id="admin_id" value="<%= id %>">
+		<input type="hidden" name="old_user_name" id="old_user_name" value="<%= username %>">
+		<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+			<div class="row">
+				<div class="col-12">
+					<div class="form-group">
+						<label class="col-form-label">Name</label>
+						<input class="form-control in_field" type="text" placeholder="Enter Sub Admin Name" autocomplete="off" name="admin_name" id="admin_name" value="<%= name %>" >
+						<div class="ui corner label star_box">
+							<i class="asterisk icon">*</i>
+						</div>
+					</div>
+				</div>
+
+                <div class="col-12">
+					<div class="form-group">
+						<label class="col-form-label">Email</label>
+						<input class="form-control in_field" type="text" placeholder="Enter Sub Admin Email" autocomplete="off" name="admin_email" id="admin_email" value="<%= email %>" >
+						<div class="ui corner label star_box">
+							<i class="asterisk icon">*</i>
+						</div>
+					</div>
+				</div>
+
+                <div class="col-12">
+					<div class="form-group">
+						<label class="col-form-label">User Name</label>
+						<input class="form-control in_field" type="text" placeholder="Enter Sub Admin Username" autocomplete="off" name="admin_username" id="admin_username" value="<%= username %>" >
+						<div class="ui corner label star_box">
+							<i class="asterisk icon">*</i>
+						</div>
+					</div>
+				</div>
+
+                <div class="col-12">
+					<div class="form-group">
+						<label class="col-form-label">Password</label>
+						<input class="form-control in_field" type="text" placeholder="Enter Password" autocomplete="off" name="password" id="password" value="<%= password %> " >
+						<div class="ui corner label star_box">
+							<i class="asterisk icon">*</i>
+						</div>
+					</div>
+				</div>
+				
+            </div>
+			<div class="form-group mb-0">
+				<button type="submit" class="effect-btn btn btn-primary squer-btn mt-2" id="submitBtn"><i class="fa fa-spin fa-spinner mr-2" id="btn_spinner"></i>Submit</button>
+				<button type="reset" class="effect-btn btn btn-danger squer-btn mt-2 mr-2"><span>Reset</span></button>
+        	</div>
+			<div class="form-group mt-2">
+                <p id="errormsg"></p>
+            </div>
+		</div>
+	</form>
+</div>   
+<script src="/adminassets/js/jquery.validate.js"></script>   
+<script src="/adminassets/js/jquery.validate.min.js"></script> 
+<script src="/adminassets/js/additional-methods.min.js"></script>            
+<script src="/adminassets/js/validation.js"></script> 	

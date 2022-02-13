@@ -1,0 +1,41 @@
+<div class="ad-auth-wrapper">
+        <div class="ad-auth-box">
+            <div class="row align-items-center">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 d-none d-sm-block">
+                    <div class="ad-auth-img">
+                        <img src="/adminassets/images/auth-img1.png" alt="" />
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                    <div class="ad-auth-content">
+                        <form id="recoverform" class="validation-form-container" method="post">
+                            <a class="ad-auth-logo">
+                                <img src="/adminassets/images/newlogo2.png" alt="" />
+                            </a>
+                            <h2><span class="primary">Hello,</span>Welcome!</h2>
+                            <p>Enter your email and we will send you a reset link</p>
+                            <div class="ad-auth-form">
+                                <div class="ad-auth-feilds">
+                                     <label class="col-form-label">&nbsp;</label>
+                                    <input type="text" autofocus name="email" id="email" class="ad-input in_field"  autocomplete="off" placeholder="<%= staremail %> "/>
+                                    <div class="ui corner label">
+                                        <i class="asterisk icon">*</i>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            
+                            <div class="ad-auth-btn">
+                                <button type="submit" class="effect-btn btn btn-primary squer-btn mt-2 mr-2 login_btn_cls" id="submitBtn"><i class="fa fa-spin fa-spinner mr-2" id="btn_spinner"></i>Send</button>
+                            </div>
+							<p id="recovermsg"></p>
+                            <p class="ad-register-text">Already have an account ? <a href="<%= admin %> ">Login</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="ad-notifications ad-error">
+                <p><span>Duhh!</span>Something Went Wrong</p>
+            </div>
+        </div>
+    </div>

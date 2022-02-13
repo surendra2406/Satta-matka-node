@@ -1,0 +1,336 @@
+$panna_arr=explode(',','000,100,110,111,112,113,114,115,116,117,118,119,120,122,123,124,125,126,127,128,129,130,133,134,135,136,137,138,139,140,144,145,146,147,148,149,150,155,156,157,158,159,160,166,167,168,169,170,177,178,179,180,188,189,190,199,200,220,222,223,224,225,226,227,228,229,230,233,234,235,236,237,238,239,240,244,245,246,247,248,249,250,255,256,257,258,259,260,266,267,268,269,270,277,278,279,280,288,289,290,299,300,330,333,334,335,336,337,338,339,340,344,345,346,347,348,349,350,355,356,357,358,359,360,366,367,368,369,370,377,378,379,380,388,389,390,399,400,440,444,445,446,447,448,449,450,455,456,457,458,459,460,466,467,468,469,470,477,478,479,480,488,489,490,499,500,550,555,556,557,558,559,560,566,567,568,569,570,577,578,579,580,588,589,590,599,600,660,666,667,668,669,670,677,678,679,680,688,689,690,699,700,770,777,778,779,780,788,789,790,799,800,880,888,889,890,899,900,990,999');
+
+<div class="row">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+		<div class="card">
+			<div class="card-header">
+				<h4>Select Game</h4>
+			</div>
+			<div class="card-body">
+				<!--<form method="post" id="gameSrchFrm" class="separate-form validation-form-container">-->
+				<form method="post" id="declareResultGameSrchFrm" class="separate-form validation-form-container">
+				<input type="hidden" name="id" id="id">
+					<div class="row">
+						<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+							<div class="form-group">
+								<?php $date = date('Y-m-d');?>
+								<label for="" class="col-form-label">Result Date</label>
+								<div class="date-picker">
+									<div class="input-group date_error">
+									  <input class="form-control disableFuturedate in_field" autocomplete="off" type="text" data-language="en" value="<?php echo $date;?>" name="result_dec_date" id="result_dec_date" data-position="bottom left" readonly>
+									  <div class="ui corner label" id="demo1">
+										<i class="asterisk icon">*</i>
+									   </div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="" class="col-form-label">Game Name</label>
+								<select class="select2 form-control in_field js-example-basic-single" id="game_id" name="game_id" >
+									<option value="">Select Game</option>
+									<?php if(isset($game_list)){ 
+										foreach($game_list as $rs){ ?>
+										<option value="<?php echo $rs->game_id;?>"><?php echo $rs->game_name;?> (<?php echo $rs['gamesweekdata']->open_time.'-'.$rs['gamesweekdata']->close_time;?>)</option>
+									<?php }} ?>
+								</select>
+								<div class="ui corner label" id="demo1">
+									<i class="asterisk icon">*</i>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-12">
+							<div class="form-group">
+								<label>Session</label>		
+								<select id="market_status" name="market_status" class="form-control">
+									<option value="">-Select Session-</option>
+									<option value="1">Open</option>
+									<option value="2">Close</option>
+								</select>	
+							</div>
+						</div>
+						
+						<div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
+							<div class="form-group">
+								<label>&nbsp;</label>	
+								<button type="submit" class="btn btn-primary btn-block" id="srchBtn" name="srchBtn"><i class="fa fa-spin fa-spinner mr-2" id="btn_spinner"></i>Go</button>
+							</div>
+						</div>
+					</div>
+					<div class="form-group mt-2">
+						<p id="errormsg"></p>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="row div_display" id="result_div">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+		<div class="card">
+			<div class="card-header">
+				<h4>Declare Result</h4>
+			</div>
+			<div class="card-body">
+				<div class="separate-form validation-form-container">
+					<div class="mt-3" id="open_game_result">
+						<div class="result_box result_box">
+							<span>Open Result :-</span>
+							<b><span id="open_result_data">000</span></b>
+						</div>
+					</div>
+					<div class="row open_panna_div">
+						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="" class="col-form-label">Panna</label>
+								<select class="select2 form-control getGameResultDigitOpen in_field js-example-basic-single" id="open_number" name="open_number" >
+								<option value="">-Select Panna-</option>
+								<?php for($p=0;$p<count($panna_arr);$p++){ ?>
+									<option value="<?php echo $panna_arr[$p];?>"><?php echo $panna_arr[$p];?></option>
+								<?php } ?>
+								</select>
+								<div class="ui corner label" id="demo1">
+									<i class="asterisk icon">*</i>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="" class="col-form-label">Digit</label>
+								<input class="form-control in_field" type="number" name="open_result" id="open_result" value="" readonly >
+								<div class="ui corner label star_box">
+									<i class="asterisk icon">*</i>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+							<div class="form-group" id="game_save_dec_btn">
+								<label for="" class="col-form-label">&nbsp;</label>
+								<button type="button" class="btn btn-primary waves-light mr-1" id="openSaveBtn" name="openSaveBtn" onclick="OpenSaveData();">Save</button>
+
+								<button type="button" class="btn btn-primary waves-light mr-1" id="openDecBtn" name="openDecBtn" onclick="decleareOpenResult();">Declare</button>
+							</div>
+						</div>
+					</div>
+					
+					<div class="row close_panna_div">
+						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="" class="col-form-label">Panna</label>
+								<select class="form-control getGameResultDigitClose in_field js-example-basic-single" id="close_number" name="close_number" >
+								<option value="">-Select Panna-</option>
+								<?php for($p=0;$p<count($panna_arr);$p++){ ?>
+									<option value="<?php echo $panna_arr[$p]; ?>"><?php echo $panna_arr[$p]; ?></option>
+								<?php } ?>
+								</select>
+								<div class="ui corner label" id="demo1">
+									<i class="asterisk icon">*</i>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="" class="col-form-label">Digit</label>
+								<input class="form-control in_field" type="number" name="close_result" id="close_result" value="" readonly >
+								<div class="ui corner label star_box">
+									<i class="asterisk icon">*</i>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12" id="close_div_msg">
+							<div class="form-group">
+								<label for="" class="col-form-label">&nbsp;</label>
+								<button type="button"  class="btn btn-primary waves-light mr-1" id="closeSaveBtn" name="closeSaveBtn" onclick="closeSaveData();" readonly >Save</button>
+
+								<button type="button" class="btn btn-primary waves-light mr-1" id="closeDecBtn" name="closeDecBtn" onclick="decleareCloseResult();">Declare</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div id="error2"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+		<div class="card table-card">
+			<div class="card-header pb-0">
+				<div class="d-flex justify-content-between">
+					<h4 class="card-title mg-b-0">Game Result History</h4>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-3">
+						<?php $date = date('Y-m-d');?>
+						<label for="" class="col-form-label">Select Result Date</label>
+						<div class="date-picker">
+							<div class="input-group date_error">
+							  <input class="form-control in_field" autocomplete="off" type="text" data-language="en" value="<?php echo $date;?>" name="game_result_date" id="game_result_date" data-position="top left" readonly>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table id="getGameResultHistory" class="table table-striped table-bordered" style="width:100%">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Game Name</th>
+								<th>Result Date</th>
+								<th>Open Declare Date</th>
+								<th>Close Declare Date</th>
+								<th>Open Pana</th>
+								<th>Close Pana</th>
+							</tr>
+						</thead>
+						<tbody id="getGameResultHistoryData">
+						<?php if(isset($gameResultData) && count($gameResultData)>0){ $i=1; $close_res = ''; $game_name = ''; $open_num = ''; $result_open = ''; $result_close = ''; 
+								foreach($gameResultData as $rs) { $game_id = $rs['games']->game_id; ?>
+							<tr>
+								<td><?php echo $i; ?></td>
+								<td><?php echo $rs['games']->game_name; ?></td>
+								<td><?php echo $rs->result_date; ?></td>
+								<?php 
+									if($rs->open_decleare_date == null || $rs->open_decleare_date == '0000-00-00 00:00:00'){
+										$open_date = 'N/A';
+									}else {
+										$open_date = date('d M Y h:i:s A',strtotime($rs->open_decleare_date));
+									}
+								?>
+								<td><?php echo $open_date; ?></td>
+								<?php 
+									if($rs->close_decleare_date == null || $rs->close_decleare_date == '0000-00-00 00:00:00'){
+										$close_date = 'N/A';
+									}else {
+										$close_date = date('d M Y h:i:s A',strtotime($rs->close_decleare_date));
+									}
+								?>
+								<td><?php echo $close_date; ?></td>
+								<?php
+									if($rs->open_number!=''){
+										$open_num=$rs->open_number[0]+$rs->open_number[1]+$rs->open_number[2];
+										if($open_num<10){
+											if($rs->open_decleare_status == 0){
+												$open_result = '<span class="td_color_1">'.$rs->open_number.'-'.$open_num.'</span>';
+											}else{
+												$open_result = '<span class="td_color_2">'.$rs->open_number.'-'.$open_num.'<span><button type="button" class="btn btn-outline-danger btn-xs ml-1 btn_cls" onclick="OpenDeleteResultConfirmData('.$game_id.','.$rs->result_date.','.$rs->id.');">Delete</button></span></span>';
+											}
+										}else if($open_num>9){
+											if($rs->open_decleare_status == 0){
+												$result_open = $rs->open_number.'-'.$open_num%10;
+												$open_result = '<span class="td_color_1">'.$result_open.'</span>';
+											}else{
+												$result_open = $rs->open_number.'-'.$open_num%10;
+												$open_result = '<span class="td_color_2">'.$result_open.'<span><button type="button" class="btn btn-outline-danger btn-xs ml-1 btn_cls" onclick="OpenDeleteResultConfirmData('.$game_id.','.$rs->result_date.','.$rs->id.');">Delete</button></span></span>';
+											}
+										}
+									}else {
+										$open_result = '<span class="sub_s td_color_1">***</span><span class="hyphen">-</span><span class="sub_s td_color_1">*</span>';
+									}
+								?>
+								<td><?php echo $open_result; ?></td>
+								
+								<?php 
+									if($rs->close_number!=''){
+									$close_num=$rs->close_number[0]+$rs->close_number[1]+$rs->close_number[2];
+									if($close_num<10){
+										if($rs->close_decleare_status == 0){
+											$close_result ='<span class="td_color_1">'.$close_num.'-'.$rs->close_number.'<span>';
+										}else{
+											$close_result ='<span class="td_color_2">'.$close_num.'-'.$rs->close_number.'<span><button type="button" class="btn btn-outline-danger btn-xs ml-1 btn_cls" onclick="closeDeleteResultConfirmData('.$game_id.','.$rs->result_date.','.$rs->id.');">Delete</button></span><span>';
+										}
+									}else if($close_num>9){
+										if($rs->close_decleare_status == 0){
+											$close_res = $close_num%10;
+											$close_result ='<span class="td_color_1">'.$close_res.'-'.$rs->close_number.'<span>';
+										}else{
+											$close_res = $close_num%10;
+											$close_result ='<span class="td_color_2">'.$close_res.'-'.$rs->close_number.'<span><button type="button" class="btn btn-outline-danger btn-xs ml-1 btn_cls" onclick="closeDeleteResultConfirmData('.$game_id.','.$rs->result_date.','.$rs->id.');">Delete</button></span><span>';
+										}
+									} 
+								}else {
+									$close_result = '<span class="sub_s td_color_1">*</span><span class="hyphen">-</span><span class="sub_s td_color_1">***</span>';
+								}
+								?>
+								<td><?php echo $close_result; ?></td>
+							</tr>
+						<?php $i++;	} 
+							} else {
+						?>
+							<tr>
+								<td class="text-center" colspan="7">No Record Found</td>
+							</tr>
+							<?php } ?>
+						</tbody>
+					</table>
+				</div>
+				<div id="error_new"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Game Result Open Data Delete Confirmation Modal Start -->
+<div class="modal fade" id="deleteConfirmOpenResutlt" tabindex="-1" role="dialog" aria-hidden="true" >
+	<div class="modal-dialog modal-frame modal-top modal-md">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<p>Are you sure you want to delete this result?</p>
+							<input type="hidden" id="delete_open_game_id" value="">
+							<input type="hidden" id="delete_open_game_date" value="">
+							<input type="hidden" id="delete_open_row_id" value="">
+						</div>
+						<div class="col-md-12 mt-3">
+							<button onclick="OpenDeleteResultData();" id="openDecBtn1" class="btn btn-primary waves-effect waves-light"><i class="fa fa-spin fa-spinner mr-2" id="btn_spinner2" style="display:none"></i>Yes</button>
+							<button class="btn btn-danger waves-effect waves-light" data-dismiss="modal">No</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Game Result Open Data Delete Confirmation Modal End -->
+
+<!-- Game Result Close Data Delete Confirmation Modal Start -->
+<div class="modal fade" id="deleteConfirmCloseResutlt" tabindex="-1" role="dialog" aria-hidden="true" >
+	<div class="modal-dialog modal-frame modal-top modal-md">
+		<div class="modal-content">
+			<div class="modal-body">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+							<p>Are you sure you want to delete this result?</p>
+							<input type="hidden" id="delete_close_game_id" value="">
+							<input type="hidden" id="delete_close_game_date" value="">
+							<input type="hidden" id="delete_close_row_id" value="">
+						</div>
+						<div class="col-md-12 mt-3">
+							<button onclick="closeDeleteResultData();" id="closeDecBtn1" class="btn btn-primary waves-effect waves-light"><i class="fa fa-spin fa-spinner mr-2" id="btn_spinner_3" style="display:none"></i>Yes</button>
+							<button class="btn btn-danger waves-effect waves-light" data-dismiss="modal">No</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Game Result Open Data Delete Confirmation Modal End -->

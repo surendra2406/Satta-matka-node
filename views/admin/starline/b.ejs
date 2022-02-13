@@ -1,0 +1,30 @@
+<div class="card-body p-0">
+	<form method="post" id="addStarlineGamesCatFrm" class="separate-form validation-form-container p-0 pb-2">
+		<input type="hidden" name="id" id="id" value="">
+		<input type="hidden" name="old_game_cat_name" id="old_game_cat_name" value="">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+			<div class="row">
+				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+					<div class="form-group">
+						<label class="col-form-label">Games Type</label>
+						<input class="form-control in_field" type="text" placeholder="Enter Games Type" autocomplete="off" name="game_cat_name" id="game_cat_name" value="" >
+						<div class="ui corner label star_box">
+							<i class="asterisk icon">*</i>
+						</div>
+					</div>
+				</div>
+            </div>
+			<div class="form-group mb-0">
+				<button type="submit" class="effect-btn btn btn-primary squer-btn mt-2" id="submitBtn"><i class="fa fa-spin fa-spinner mr-2" id="btn_spinner"></i>Submit</button>
+				<button type="reset" class="effect-btn btn btn-danger squer-btn mt-2 mr-2"><span>Reset</span></button>
+        	</div>
+			<div class="form-group mt-2">
+                <p id="errormsg"></p>
+            </div>
+		</div>
+	</form>
+</div>   
+<script src="/adminassets/js/jquery.validate.js"></script>   
+<script src="/adminassets/js/jquery.validate.min.js"></script> 
+<script src="/adminassets/js/additional-methods.min.js"></script>            
+<script src="/adminassets/js/validation.js"></script> 	

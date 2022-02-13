@@ -1,0 +1,66 @@
+<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+    <div class="card">
+        <div class="card-header">
+            <h4><%= title %></h4>
+        </div>
+        <div class="card-body p-0">
+            <div class="row">
+                <div class="col-md-6">
+                    <form class="separate-form validation-form-container" id="changePassFrm" method="post">
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="old_password" class="col-form-label">Old Password</label>
+								<input class="form-control in_field" type="password" name="old_password" id="old_password" placeholder="Enter old password">
+								<div class="ui corner label">
+									<i class="asterisk icon">*</i>
+								</div>
+								<span toggle="#old_password" class="fa fa-eye-slash field-icon toggle-login-password pass_eye" onclick="togglePassword(1);"></span>
+							</div>
+						</div>
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="new_password" class="col-form-label">New Password</label>
+								<input class="form-control in_field" type="password" name="new_password" id="new_password" placeholder="Enter new password" onkeyup="checkPassword(this.value,1)">
+								<div class="ui corner label">
+									<i class="asterisk icon">*</i>
+								</div>
+								<span toggle="#new_password" class="fa fa-eye-slash field-icon toggle-login-password2 pass_eye" onclick="togglePassword(2);"></span>
+							</div>
+						</div>
+						<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+							<div class="form-group">
+								<label for="confirm_password" class="col-form-label">Confirm Password</label>
+								<input class="form-control in_field" type="password" name="confirm_password" id="confirm_password" placeholder="Enter confirm password">
+								<div class="ui corner label">
+									<i class="asterisk icon">*</i>
+								</div>
+								<span toggle="#confirm_password" class="fa fa-eye-slash field-icon toggle-login-password3 pass_eye" onclick="togglePassword(3);"></span>
+							</div>
+						</div>
+						<div class="form-group mb-0 col-md-12">
+							<button type="submit" class="effect-btn btn btn-danger squer-btn mt-2 mr-2" id="submitBtn"><i class="fa fa-spin fa-spinner mr-2" id="btn_spinner"></i>Submit</button>
+							<button type="reset" class="effect-btn btn btn-primary squer-btn mt-2 mr-2"><span>Reset</span></button>
+						</div>
+						<div class="form-group mt-2 col-md-12">
+								<p id="errormsg"></p>
+						</div>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <div class="card card_pass">
+                        <div class="password_cre">
+                            <h4>Password must meet the following requirements:</h4>
+                            <ul>
+                                <li><i class="fa fa-times error_pass" aria-hidden="true" id="pas_len"></i> Password must contain 8 charactes</li>
+                                <li><i class="fa fa-times error_pass" aria-hidden="true" id="spe_ch"></i> Password must contain one special charater</li>
+                                <li><i class="fa fa-times error_pass" aria-hidden="true" id="upp_lett"></i> Password must contain one upper case letter</li>
+                                <li><i class="fa fa-times error_pass" aria-hidden="true" id="low_lett"></i> Password must contain one lower case letter</li>
+                                <li><i class="fa fa-times error_pass" aria-hidden="true" id="pass_num"></i> Password must contain one number</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

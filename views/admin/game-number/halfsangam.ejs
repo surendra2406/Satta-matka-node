@@ -1,0 +1,63 @@
+<div class="row">
+	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+		<div class="card table-card">
+			<div class="card-header pb-0">
+				<div class="d-flex justify-content-between">
+					<h4 class="card-title mg-b-0">Half Sangam Numbers</h4>
+					 <!-- <a class="effect-btn btn btn-primary squer-btn mr-2 openPopupAddGames"  href="javascript:void(0);" data-href="<%= admin %>/add-games/0" role="button" data-toggle="modal">Add Games</a>	 --> 
+				</div>
+			</div>
+			<div>
+				<div class="table-responsive">
+					<label style="margin: 10px;">Open Ank</label>
+					<div style="display: flex;justify-content: left; align-content: space-around; flex-direction: row; flex-wrap: wrap; overflow-y: auto;">
+						
+						
+					
+						<% for( let index = 0; index < 10; index++ ) { %>
+							<div style="background-color: aquamarine;border: 3px solid green; color: black;width: 50px; ;
+							height: 50px; text-align: center;font-size: 18px;padding: 10px; border-radius: 5px; margin:1%  ; height: 50px;">
+								<%= numbers.sr_no[index] %></div>
+								
+						<% } %>
+							<br/>
+						
+	
+					</div>
+
+					<label style="margin: 10px;">Close Ank</label>
+					<div style="display: flex;justify-content: left; align-content: space-around; flex-direction: row; flex-wrap: wrap;">
+					
+					
+						<% for( let k = 0; k < 236; k++ ) { %>
+							<div style="background-color: aquamarine;border: 3px solid green; color: black;width: 50px; ;
+							height: 50px; text-align: center;font-size: 15px;padding: 7px; border-radius: 5px; margin:1%  ; ">
+							
+								
+								<%= num2[k] %></div>
+								
+						<% } %>
+						
+						
+						
+	
+					</div>
+					
+				</div>	
+				
+				
+					
+									
+									
+										
+										
+
+								
+						
+
+				
+				<div id="msg"></div>
+			</div>
+		</div>
+	</div>
+</div>
